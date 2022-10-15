@@ -46,11 +46,15 @@ function App() {
 
     // Select choices
     function selectAnswer(id, answer) {
-        setQuizData((prevQuizData) =>
-            prevQuizData.map((qn) => {
-                return qn.id === id ? { ...qn, selectedAnswer: answer } : qn;
-            })
-        );
+        if (!isGameOver) {
+            setQuizData((prevQuizData) =>
+                prevQuizData.map((qn) => {
+                    return qn.id === id
+                        ? { ...qn, selectedAnswer: answer }
+                        : qn;
+                })
+            );
+        }
 
         // Set isCorrect
         setQuizData((prevQuizData) =>
